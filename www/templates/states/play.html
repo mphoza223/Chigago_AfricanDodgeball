@@ -1,0 +1,350 @@
+<ion-view name="menuContent2" ng-init="setUpRhemaSession()">  
+  <ion-pane class="container" id="play-pane">
+  <div ng-class="{bloodshot: bloodshot==true, noBlood: bloodshot==false}"></div>
+  <div align="center" class="greenshot" ng-if="greenshot">
+    <!-- <div ng-class="{greenshot: greenshot==true, noGreen: greenshot==false}" > -->
+        <p style="font-family: Ichiro; font-size: 12em; padding-top: 20%;">{{loading_msg}}</p>
+  </div>
+  
+
+  <div id="info_board" style="padding-top: 2em; ">
+    <div style="float: left; min-height: 10px; min-width: 10px; margin-left: 5px; font-family: digital; font-size: 1.2em;">
+      <span style="margin-right: 10px; color: white;">Stage: <span style="color: orange;">{{sessobj.stage}}</span></span><br>
+      <span style="margin-right: 10px; color: white;">Score: <span style="color: orange;">{{sessobj.score}}</span></span><br>
+      <span style="margin-right: 10px; color: white;">Difficulty: <span style="color: orange;">{{sessobj.difficulty}}/3</span></span><br>
+      </div>
+
+  <div style="float: right; min-width: 10px; margin-right: 20px; max-width: 100px;margin-top: 1.5em;" align="center">
+      <div class="tinHUD" style="max-width: 20px; min-width: 20px;"  ng-class="{packed: goalPos.t1==true, unpacked: goalPos.t1==false}">
+        <i class="ion-checkmark balanced" ng-if="goalPos.t1"></i>
+        <i class="ion-android-close assertive" ng-if="goalPos.t1==false"></i>
+      </div>
+      <div class="tinHUD" style="max-width: 24px; min-width: 24px;"  ng-class="{packed: goalPos.t2==true, unpacked: goalPos.t2==false}">
+        <i class="ion-checkmark balanced" ng-if="goalPos.t2"></i>
+        <i class="ion-android-close assertive" ng-if="goalPos.t2==false"></i>
+      </div>
+      <div class="tinHUD" style="max-width: 28px; min-width: 28px;"  ng-class="{packed: goalPos.t3==true, unpacked: goalPos.t3==false}">
+        <i class="ion-checkmark balanced" ng-if="goalPos.t3"></i>
+        <i class="ion-android-close assertive" ng-if="goalPos.t3==false"></i>
+      </div>
+      <div class="tinHUD" style="max-width: 32px; min-width: 32px;"  ng-class="{packed: goalPos.t4==true, unpacked: goalPos.t4==false}">
+        <i class="ion-checkmark balanced" ng-if="goalPos.t4"></i>
+         <i class="ion-android-close assertive" ng-if="goalPos.t4==false"></i>
+      </div>
+      <div class="tinHUD" style="max-width: 36px; min-width: 36px;"  ng-class="{packed: goalPos.t5==true, unpacked: goalPos.t5==false}">
+        <i class="ion-checkmark balanced" ng-if="goalPos.t5"></i>
+        <i class="ion-android-close assertive" ng-if="goalPos.t5==false"></i>
+      </div>
+</div>
+  </div>
+
+  <div>
+  <div  id="Stats" ng-show="showStats==true"></div>
+  <div class="bar bar-header bar-clear">
+      <div style="font-size: 1.2em;  margin-right: 10px;">
+        <i ng-class="{goodHealth: sessobj.health.h1==true, badHealth: sessobj.health.h1==false}"></i>
+        <i ng-class="{goodHealth: sessobj.health.h2==true, badHealth: sessobj.health.h2==false}"></i>
+        <i ng-class="{goodHealth: sessobj.health.h3==true, badHealth: sessobj.health.h3==false}"></i>
+        <i ng-class="{goodHealth: sessobj.health.h4==true, badHealth: sessobj.health.h4==false}"></i>
+        <i ng-class="{goodHealth: sessobj.health.h5==true, badHealth: sessobj.health.h5==false}"></i>
+
+      </div>
+       <!-- -->
+      <div class="title" style="font-family: digital; font-size: 2em; display:inline-block;">
+        <div class="timer">
+        <span style="min-width: 2em; max-width: 2em;"><span ng-if="sessobj.sessTimer.min<10">0</span>{{sessobj.sessTimer.min}}</span>
+          <span style="min-width: 3px; max-width: 3px;">:</span>
+        <span  style="min-width: 2em; max-width: 2em;"><span ng-if="sessobj.sessTimer.sec<10">0</span>{{sessobj.sessTimer.sec}}</span>
+          <span style="min-width: 3px; max-width: 3px;">:</span>
+        <span  style="min-width: 2em; max-width: 2em;"><span ng-if="sessobj.sessTimer.milSec<10">0</span>{{sessobj.sessTimer.milSec}}</span>
+       </div>
+      </div>
+
+       <div class="button selStar" ng-click="sessMenu($event)" ng-disabled="greenshot" style="background-color: transparent; min-width: 7em;">
+        <span style="font-family: Ichiro; font-size: 2.5em; color: orange;">Pause</span>
+     </div>
+
+  </div>      
+
+  <div id="output"></div>
+  <div id="funkyBtnHolder">
+    <img id="funkyBtn" src="img/fingerprint.png" style="z-index: 900; position: absolute;" />
+
+  <div>
+      <div  align="center" style="min-height: 40px; margin-top: 0px;  margin-bottom: 7px;">
+      <i class="con ion-android-arrow-dropup" id="navUp"></i>
+      </div>
+      <div  style="min-height: 40px; margin-bottom: 12px;">
+      <i class="con ion-android-arrow-dropleft" id="navLeft" style="float: left; margin-left: 6px;"></i>
+      <i class="con ion-android-arrow-dropright" id="navRight" style="float: right; margin-right: 6px;"></i>
+      </div>
+      <div  align="center" style="min-height: 40px;">
+      <i class="con ion-android-arrow-dropdown" id="navDown"></i>
+      </div>
+
+  </div>
+  </div>
+
+  <div class="bar bar-footer bar-clear">
+      <h4 class="title">
+      <!-- ng-show="boodskap" -->
+      <i class="emoji moj1" ng-if="moj1"></i>
+      <i class="emoji moj2" ng-if="moj2"></i>
+      <i class="emoji moj3" ng-if="moj3"></i>
+      <i class="emoji moj4" ng-if="moj4"></i>
+      <i class="emoji moj5" ng-if="moj5"></i>
+      <i class="emoji moj6" ng-if="moj6"></i>
+      <i class="emoji moj7" ng-if="moj7"></i>
+      <i class="emoji moj8" ng-if="moj8"></i>
+      <i class="emoji moj9" ng-if="moj9"></i>
+      <i class="emoji moj10" ng-if="moj10"></i>
+      <i class="emoji moj11" ng-if="moj11"></i>
+      <i class="emoji moj12" ng-if="moj12"></i>
+      <i class="emoji moj13" ng-if="moj13"></i>
+      <i class="emoji moj14" ng-if="moj14"></i>
+      <i class="emoji moj15" ng-if="moj15"></i>
+      <i class="emoji moj16" ng-if="moj16"></i>
+      <i class="emoji moj17" ng-if="moj17"></i>
+      {{RUNTIME_MSG}}<div></h4>
+  </div>
+
+  <div id="psCtrls">
+      <div align="center" style="min-height: 40px; margin-top: 4px;">
+      <button class="psBtns" style="color: green;" ng-click="PS_CTRL('place', true)"> 
+        <img src="img/top.png" class="full-image" style="margin-top: 3.5px;">
+      </button>
+      </div>
+      <div style="min-height: 40px">
+      <button class="psBtns" style="margin-left: 10px; color: purple;" ng-click="PS_CTRL('squat', true)" >
+      <i class="ion-android-checkbox-outline-blank"></i>
+      </button>
+      <button class="psBtns" style="float: right; margin-right: 10px; color: red;" ng-click="PS_CTRL('hintsNfixes', false)">
+      <i class="ion-android-radio-button-off"></i>
+      </button>
+      </div>
+      <div align="center" style="min-height: 40px">
+      <button class="psBtns" style="color: blue;" ng-click="PS_CTRL('grab', true)">
+      <i class="ion-android-close"></i>
+      </button>
+      </div>
+  </div>
+
+    </div>
+  </ion-pane>
+</ion-view>
+
+<script type="text/ng-template" id="sessMenu.html">
+    <ion-popover-view class="quickMenu">
+      <ion-pane style="background-color: #444;">
+        <div style="padding: 7px; font-size: 1.25em;" class="light">
+
+             <p class="dark in" ng-click="resumeSession()">Resume</p>
+             <p class="dark in" ng-click="newGame()">New game</p>
+              <!-- <p class="dark in" ng-click="swopPlayerPan()">Change player</p> -->
+             <p class="dark in" ng-click="abortSession()">Quit</p>
+         </div>
+      </ion-pane>
+  </ion-popover-view>
+</script>
+
+<script type="text/ng-template" id="swopPlayerMod.html">
+<ion-modal-view>  
+<ion-nav-bar class="bar-clear">
+    <ion-nav-buttons side="right">
+      <button class=" button button-clear" ng-disabled="swopModBtn" style="font-size: 2.5em; font-family: Ichiro; color: orange;" ng-click="cancelSwopPlayer()">Cancel</button>
+    </ion-nav-buttons>
+</ion-nav-bar> 
+<ion-content class="container">
+   <div>
+      <div class="list centerList" ng-repeat="permited_pl in sessobj.legalPlayers" ng-click="doSwopPlayer(permited_pl)">
+        <a class="item item-thumbnail-left">
+            <img ng-src="{{permited_pl.url}}" style="border-radius: 50%;">
+            <span style="font-size: 2em; color:grey; position: absolute; left: 5.5%; bottom: 10%; font-family: Ichiro;">{{permited_pl.name}}</span>
+          <i class="icon ion-android-lock energized" ng-if="permited_pl.locked" style="font-size: 1.5em; position: absolute;left: 2%;"></i>
+
+          <div class="playerInfo2">
+             <div><div class="pl_info">speed</div><meter value="{{permited_pl.quals.speed}}" max="100" id="speed"> </meter></div><br>
+             <div><div class="pl_info">agility</div> <meter value="{{permited_pl.quals.agility}}" max="100" id="speed"></meter></div><br>
+             <!-- <div><div class="pl_info">aerobics</div> <meter value="{{permited_pl.quals.aerobics}}" max="100" id="speed"></meter></div> -->
+          </div>
+        </a>
+      </div>
+   </div>
+ </ion-content>      
+</ion-modal-view>
+</script>
+
+  <style type="text/css">
+
+  .container{
+    background-image: url('img/home_bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .pl_info{
+      
+      font-size: 0.8em;
+      /*font-family: Ichiro;*/
+      display: inline-block;
+      /*text-align: center;*/      
+}
+
+meter{
+
+  height: 10px;
+  width: 65%;
+  display: inline;
+  float: right;
+  margin-right: 15%;
+  margin-top: 7px;
+}
+
+  .timer{
+
+    margin-left: 40%;
+    margin-right: 50%;
+  }
+
+  .goodHealth{
+      min-height: 1.2em;
+      min-width:  1.2em;
+      background-image: url('img/icon.png');
+      background-size: cover;
+      display: inline-block;
+  }
+
+  .badHealth{
+      min-height: 1.2em;
+      min-width:  1.2em;
+      background-image: url('img/healthGrey.png');
+      background-size: cover;
+      display: inline-block;
+  }
+
+  .tinHUD{
+      border-radius: 3px;
+      background-color: transparent;
+      height: 20px;
+      margin-bottom: 2px;
+  }
+  .packed{ border: 1px solid #00C853;}
+
+  .unpacked{
+      border: 1px solid #ef473a;
+ }
+
+  .prev{
+    max-height: 120px;
+    max-width: 120px;
+  }
+
+  #funkyBtn{
+        height: 40px;
+        width: 40px;
+        border-radius: 50%; 
+  }
+
+  #funkyBtnHolder {   
+        border-radius: 50%; 
+        background:#f2f2f2;
+        height: 120px;
+        width: 120px;
+        
+        opacity: 0.65;
+        bottom: 5px;
+        left: 20px;
+        /*overflow: hidden;*/
+        position: fixed;
+        z-index: 5000;
+        float: left;
+      }
+
+  .bloodshot{
+      min-height: 100%;
+      min-width: 100%;
+      opacity: 0.4;
+      background-color: red;
+      z-index: 700;
+  }
+
+  .greenshot{
+      min-height: 100%;
+      min-width: 100%;
+      /*opacity: 0.65;*/
+      z-index: 7000;
+      color: white;
+  }
+
+  .noGreen{
+      /*background-color: unset;*/
+      color: black;
+  }
+
+  #info_board{
+      min-height: 100%;
+      min-width: 100%;
+      z-index: 800;
+  }
+
+  .noBlood{
+    background-color: unset;
+  }
+
+  #psCtrls{bottom: 5px;position: fixed; right: 20px;opacity: 0.65;background:#f2f2f2;height: 120px;width: 120px;border-radius: 50%; z-index: 600;}  
+  .psBtns{border-radius: 50%;height: 30px;width: 30px;overflow: hidden;} 
+  .player_icn{width: 45px;height: 45px; border-radius: 5px;}
+  
+  @keyframes fade {
+    from { opacity: 0.0; } 
+    50% { opacity: 1; }
+    to  { opacity: 0.0; }
+}
+ 
+@-webkit-keyframes fade {
+    from { opacity: 0.0; } 
+    50% { opacity: 1; }
+    to  { opacity: 0.0; }
+}
+
+}
+ 
+.flicker {
+    animation:fade 1000ms infinite;
+    -webkit-animation:fade 1000ms infinite;
+    color: red;
+} 
+
+.con{
+    font-size: 1.5em;
+     color: orange;
+}
+
+.in{
+    margin-bottom: 0.2em;
+    margin-left: 8px;
+    font-family: Ichiro;
+    padding: 0px;
+    font-size: 1.5em;
+    color: orange;
+}
+
+.quickMenu{
+    max-width: 160px;
+    height: 120px;
+
+}
+
+.centerList{
+    max-width: 70%;
+    opacity: 0.7;
+    margin-left: 15%;
+}
+
+.playerInfo2{
+    margin: 2px;
+    min-height: 100px;
+}
+
+</style>
+
+ 

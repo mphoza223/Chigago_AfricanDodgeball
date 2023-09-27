@@ -1,0 +1,98 @@
+
+<ion-view>  
+
+<ion-nav-bar class="bar bar-clear">
+    <ion-nav-buttons side="left">
+  <div class="button selStar" style="background-color: transparent; min-width: 7em; width: 80px;" ng-click="closeInstructionsModal()">
+    <span style="font-family: Ichiro; font-size: 3em; color: orange;">Got it</span></div>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+      <span style="font-size: 1.2em;">{{instructionSlideIndex}}/5</span>
+    </ion-nav-buttons>
+</ion-nav-bar> 
+<ion-content class="covfefe" ng-init="instInit()">
+
+<ion-slide-box on-slide-changed="instSlideChanged(index, $event)"  style="height: 100%; "> 
+  <ion-slide><br>
+     <h1 style="font-family: Ichiro; font-size: 3em; color: white; text-align: center; padding-bottom: 1px;" ><strong> The goal...</strong></h1>
+     <p style="padding: 20px; color: white; font-size: 0.85em; padding-top: 1px;">
+       You have to stack up all the cans, one on top of the other such that they form a pyramid-like structure, so biggest can will go at the bottom and the smallest will go right at the top. After stacking them up you have to jump over them in order to go through to the next stage (although some stages require that you do this more than once). You can't just stack the cans anywhere, it has to be within the green circle at the center of the street. All this has to be done within stipulated time while trying not to get hit by the ball. <br><br>
+       
+     </p>
+  </ion-slide>
+
+    <ion-slide>
+      <h1  style="font-family: Ichiro; font-size: 3em; color: white; text-align: center;"><strong>Controls</strong></h1>
+
+      <div style=" margin-left: 10px; margin-right: 10px; float: left; max-width: 20%;">
+        <img src="img/psCtrls.png" style="width: 100%;height: relative; margin-right: 10px;"><br>
+        <img src="img/analogBtn.png" style="width: 100%; height: relative;">
+      </div>
+        <p style="color: white; font-size: 0.85em;" class="padding">
+              <strong style="color: orange;">A</strong> - This button makes the player jump really high. Ideal for going over the cans once they're stacked up. <br>
+              <strong style="color: orange;">B</strong> - This is to give you hints and fix the pyramid. If the player is far from the green circle, it will indicate to you which can should be stacked next by turning that can orange for a while, but if the player is close to the green circle then it will fix up the cans that are already stacked so that they don't fall and also push away cans that are too close and could tip over the pyramid.
+        </p>
+  </ion-slide>
+      <ion-slide>
+      <h1  style="font-family: Ichiro; font-size: 3em; color: white; text-align: center;"><strong>Controls </strong>(continued)</h1>
+      <div style=" margin-left: 10px; margin-right: 10px; float: left; max-width: 20%;">
+        <img src="img/psCtrls.png" style="width: 100%;height: relative; margin-right: 10px;"><br>
+        <img src="img/analogBtn.png" style="width: 100%; height: relative;">
+      </div>
+        <p style="color: white; font-size: 0.85em;" class="padding">
+              <strong style="color: orange;">C</strong> -  This button is for picking and dropping/placing cans (the player has to be close to the can though).<br>
+              <strong style="color: orange;">D</strong> -  This button makes the player kneel and bend over forward. Useful for ducking high flying balls.<br>
+              <strong style="color: orange;">E</strong> -  The analog button is for moving the player around the field. Note, though, that it will move the player with respect to the view-port (i.e. your screen/camera perspective) and not the field itself, so if the view-port changes it will get recalibrated accordingly. It might feel hard to use at first but it quickly becomes intuitive (ska wara neh).
+        </p>
+  </ion-slide>
+
+
+    <ion-slide>
+      <h1 style="font-family: Ichiro; font-size: 3em; color: white; text-align: center;"><strong>Tips and Gotchas!</strong></h1>
+      <p style="color: white; font-size: 0.85em;" class="padding">
+        * This game seems simple and straight forward (and it is), but it's also a brain teaser of sorts. You have to keep the clock in mind, pack the cans and watch out for the fielders all at the same time.<br>
+        * The heads-up display (HUD) on the right will indicate to you which cans are properly stacked by turning green if a can is in position and red if it isn't. <br>
+        * If it looks like a can is in position yet the HUD "red-flags" it, you need to fix the cans by stepping on the green circle (or be close enough) and then press button "B" (the red circle one).<br>
+        * You might want to follow the preceding tip every now and again because gravity (and other forces) will still act on the cans even when they're stacked.
+      </p>
+  </ion-slide>
+      <ion-slide>
+      <h1 style="font-family: Ichiro; font-size: 3em; color: white; text-align: center;"><strong>Tips and Gotchas! </strong>(continued)</h1>
+      <p style="color: white; font-size: 0.85em;" class="padding">
+
+        * You can dodge the ball by running but your score will be low. Ducking the ball by using tricks gets you more points.<br>
+        * You can go through the cans without knocking them down. (Yeah I know, it sounds Limpopo-ish).<br>
+        * The two fielders will ALWAYS aim the ball at you (duh...) which means everything around you is a target as well ( especially if they miss), so to avoid having your pyramid scattered, avoid playing too close to the circle unless you absolutely have to (like when you place a can). 
+
+      </p>
+  </ion-slide>
+</ion-slide-box>
+ </ion-content> 
+ <div class="bar bar-clear bar-footer" style="opacity: 0.85;">
+ <div class="button button-small selStar" style="background-color: transparent; min-width: 7em;"  ng-click="instructionsPager('previous')">
+    <span style="font-family: Ichiro; font-size: 3em; color: orange;">Previous</span>
+ </div>
+
+ <div class="title"></div>
+
+   <button class="button selStar" style="background-color: transparent; min-width: 7em;"  ng-click="instructionsPager('next')">
+    <span style="font-family: Ichiro; font-size: 3em; color: orange;">Next</span>
+  </button>
+  </div>     
+</ion-view>
+
+<style type="text/css">
+  
+  .covfefe{
+    background-image: url('img/home_bg.png');
+    /*background-color: yellow;*/
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+  }
+
+    .selStar{
+  width: 80px;
+  padding: 2px;
+}
+</style>

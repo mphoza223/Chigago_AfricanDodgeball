@@ -1,0 +1,266 @@
+@font-face {
+ font-family: Klavika Bd;
+ src: url(../fonts/klavika-bold-opentype.otf);
+ }
+
+ @font-face{
+
+    font-family: digital;
+    src: url(../fonts/digital/digital-7.ttf);
+ }
+
+ @font-face{
+    font-family: Ichiro;
+    src: url(../fonts/1_Ichiro.otf);
+ }
+
+
+ @font-face{
+    font-family: Lucida;
+    src: url(../fonts/LucidaSansRegular.ttf);
+ }
+
+
+
+ .gameOverType{
+    color: green;
+    font
+ }
+
+ /*color: #3b5998; RGB: 59,89,152>> facebook color
+  darker shade: #24365b
+ */
+
+ .transpii{
+  background: transparent;
+  
+ }
+
+ .confBtn{
+   font-size: 2.5em;
+   font-family: Ichiro;
+   color: orange;
+   text-shadow: black;
+   background: transparent;
+ }
+
+
+ .revolution{
+
+ 	        -webkit-animation-name: spinnerRotate;
+          -webkit-animation-duration: 5s;
+          -webkit-animation-iteration-count: infinite;
+          -webkit-animation-timing-function: linear;
+
+          -moz-animation-name: spinnerRotate;
+          -moz-animation-duration: 5s;
+          -moz-animation-iteration-count: infinite;
+          -moz-animation-timing-function: linear;
+
+          -ms-animation-name: spinnerRotate;
+          -ms-animation-duration: 5s;
+          -ms-animation-iteration-count: infinite;
+          -ms-animation-timing-function: linear;
+        
+ }
+  @-webkit-keyframes spinnerRotate
+      {
+          from{-webkit-transform:rotate(0deg);}
+          to{-webkit-transform:rotate(360deg);}
+      }
+      @-moz-keyframes spinnerRotate
+      {
+          from{-moz-transform:rotate(0deg);}
+          to{-moz-transform:rotate(360deg);}
+      }
+      @-ms-keyframes spinnerRotate
+      {
+          from{-ms-transform:rotate(0deg);}
+          to{-ms-transform:rotate(360deg);}
+      }
+
+ .loader {
+  position: relative;
+  margin: 0px auto;
+  width: 100px;
+  height: 100px;
+  zoom: 1.7; }
+
+  .circular {
+  -webkit-animation: rotate 2s linear infinite;
+  animation: rotate 2s linear infinite;
+  height: 100px;
+  position: relative;
+  width: 100px; }
+
+  .path {
+  stroke-dasharray: 1,200;
+  stroke-dashoffset: 0;
+  -webkit-animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+  animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+  stroke-linecap: round; }
+
+  @-webkit-keyframes rotate {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+
+@keyframes rotate {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+
+
+
+@-webkit-keyframes dash {
+  0% {
+    stroke-dasharray: 1,200;
+    stroke-dashoffset: 0; }
+  50% {
+    stroke-dasharray: 89,200;
+    stroke-dashoffset: -35; }
+  100% {
+    stroke-dasharray: 89,200;
+    stroke-dashoffset: -124; } }
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1,200;
+    stroke-dashoffset: 0; }
+  50% {
+    stroke-dasharray: 89,200;
+    stroke-dashoffset: -35; }
+  100% {
+    stroke-dasharray: 89,200;
+    stroke-dashoffset: -124; } }
+
+@-webkit-keyframes color {
+  100%, 0% {
+    stroke: #11c1f3; }
+  40% {
+    stroke: #0057e7; }
+  66% {
+    stroke: #008744; }
+  80%, 90% {
+    stroke: #ffa700; } }
+
+@keyframes color {
+  100%, 0% {
+    stroke: #11c1f3; }
+  40% {
+    stroke: #0057e7; }
+  66% {
+    stroke: #008744; }
+  80%, 90% {
+    stroke: #ffa700; } }
+      
+  .checkTest{
+    position: relative;
+    width: 17px;
+    height: 17px;
+    margin: 10px;
+    border: 0;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    background: #ddd;
+  }
+
+@keyframes hider {
+   from { opacity: 1.0; } 
+    50% { opacity: 0.5; }
+    to  { opacity: 1.0; }
+}
+ 
+@-webkit-keyframes hider {
+    from { opacity: 1.0; } 
+    50% { opacity: 0.5; }
+    to  { opacity: 1.0; }
+}
+ 
+.generalBlink {
+    animation:hider 800ms infinite;
+    -webkit-animation:hider 800ms infinite;
+    padding: 0px;
+    margin: 2px;
+}
+
+
+.emoji{
+
+  width: 30px;
+  height: 30px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.moj1{
+  background-image: url('../img/emojis/moj_1.png');
+}
+
+.moj2{
+  background-image: url('../img/emojis/moj_2.png');
+}
+
+.moj3{
+  background-image: url('../img/emojis/moj_3.png');
+}
+
+.moj4{
+  background-image: url('../img/emojis/moj_4.png');
+}
+
+.moj5{
+  background-image: url('../img/emojis/moj_5.png');
+}
+
+.moj6{
+  background-image: url('../img/emojis/moj_6.png');
+}
+
+.moj7{
+  background-image: url('../img/emojis/moj_7.png');
+}
+
+.moj8{
+  background-image: url('../img/emojis/moj_8.png');
+}
+
+.moj9{
+  background-image: url('../img/emojis/moj_9.png');
+}
+
+.moj10{
+  background-image: url('../img/emojis/moj_10.png');
+}
+
+.moj11{
+  background-image: url('../img/emojis/moj_11.png');
+}
+
+.moj12{
+  background-image: url('../img/emojis/moj_12.png');
+}
+
+.moj13{
+  background-image: url('../img/emojis/moj_13.png');
+}
+
+.moj14{
+  background-image: url('../img/emojis/moj_14.png');
+}
+
+.moj15{
+  background-image: url('../img/emojis/moj_15.png');
+}
+
+.moj16{
+  background-image: url('../img/emojis/moj_16.png');
+}
+
+.moj17{
+  background-image: url('../img/emojis/moj_17.png');
+}

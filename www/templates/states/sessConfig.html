@@ -1,0 +1,327 @@
+<ion-view>  
+  
+
+<div class="bar bar-header bar-clear" style="opacity: 0.85;"  ng-show="setPlayers">
+<button class="button" ui-sref="app.home"  style="background-color: transparent; min-width: 7em;">
+  <span style="font-family: Ichiro; color: orange; font-size: 3em;">Cancel</span>
+</button>
+
+
+<div class="title"> 
+  <h5 align="center" ng-class="{flicker: NotaBene==true, noFlick: NotaBene==false}" ng-if="setDifficulty==false">{{molaetsa}}</h5>  
+  <h5 class="noFlick" align="center"  ng-if="setDifficulty==true"> adjust knob to set level of difficulty</h5>
+                
+            
+</div>
+
+<button class="button" style="background-color: transparent;" ng-click="difficultyConfig()">
+  <span style="font-family: Ichiro; color: orange; font-size: 3em; min-width: 7em;">Difficulty</span>
+</button>
+
+</div>
+<ion-pane  class="lePane has-header row row-center">
+
+<div  ng-show="setPlayers" class="col">
+<div style="max-width: 10%; min-width: 10%; min-height: 50%; z-index: 500;" class="innerDivs" ng-click="viewNxtPlayer('left', index)" ng-class="{dim: plSelectionLeftInit==true, noDim: plSelectionLeftInit==false}">
+  <i class="ion-ios-arrow-left skiper light" style="left:  3%;" ng-if="plSelectionLeft"></i>
+</div>
+
+<div  style="max-width: 79%; min-width: 79%;" class="innerDivs">   
+    
+  <h1 style="padding: 0px; margin-left: 10%; margin-top: 2px; margin-bottom: 2px; font-family: Ichiro;" class="stable">{{pendinguser.name}}</h1>
+          
+<ion-slide-box on-slide-changed="ugSlideChanged(index, $event)" id="viewPort"  ng-init="instInit()"> 
+  <ion-slide>
+      <div>
+      <img src="img/candidates/Khensani.png" class="charImg">
+      <i class="icon ion-android-lock energized" ng-if="pendinguser.locked" style="font-size: 3em; position: absolute;left: 4%;"></i>
+    </div>
+      <div class="card playerInfo">
+         <span class="progTitl">speed</span> <meter value="{{pendinguser.quals.speed}}" max="100" id="different"></meter><br><br>
+         <span class="progTitl">agility</span> <meter value="{{pendinguser.quals.agility}}" max="100" id=""></meter><br><br>
+         <span class="progTitl">aerobics</span> <meter value="{{pendinguser.quals.aerobics}}" max="100" id=""></meter>
+      </div>
+  </ion-slide>
+    <ion-slide>
+      <div>
+      <img src="img/candidates/Linda.png" class="charImg">
+      <i class="icon ion-android-lock energized" ng-if="pendinguser.locked" style="font-size: 3em; position: absolute;left: 4%;"></i>
+    </div>
+      <div class="card playerInfo">
+         <span class="progTitl">speed</span> <meter value="{{pendinguser.quals.speed}}" max="100" id="speed"></meter><br><br>
+         <span class="progTitl">agility</span> <meter value="{{pendinguser.quals.agility}}" max="100" id="speed"></meter><br><br>
+         <span class="progTitl">aerobics</span> <meter value="{{pendinguser.quals.aerobics}}" max="100" id="speed"></meter>
+      </div>
+  </ion-slide>
+    <ion-slide>
+      <div>
+      <img src="img/candidates/Lorna.png" class="charImg">
+      <i class="icon ion-android-lock energized" ng-if="pendinguser.locked" style="font-size: 3em; position: absolute;left: 4%;"></i>
+      </div>
+      <div class="card playerInfo">
+         <span class="progTitl">speed</span> <meter value="{{pendinguser.quals.speed}}" max="100" id="speed"></meter><br><br>
+         <span class="progTitl">agility</span> <meter value="{{pendinguser.quals.agility}}" max="100" id="speed"></meter><br><br>
+         <span class="progTitl">aerobics</span> <meter value="{{pendinguser.quals.aerobics}}" max="100" id="speed"></meter>
+      </div>
+  </ion-slide>
+    <ion-slide>
+      <div>
+      <img src="img/candidates/Moss.png" class="charImg">
+      <i class="icon ion-android-lock energized" ng-if="pendinguser.locked" style="font-size: 3em; position: absolute;left: 4%;"></i>
+    </div>
+      <div class="card playerInfo">
+         <span class="progTitl">speed</span> <meter value="{{pendinguser.quals.speed}}" max="100" id="speed"></meter><br><br>
+         <span class="progTitl">agility</span> <meter value="{{pendinguser.quals.agility}}" max="100" id="speed"></meter><br><br>
+         <span class="progTitl">aerobics</span> <meter value="{{pendinguser.quals.aerobics}}" max="100" id="speed"></meter>
+      </div>
+  </ion-slide>
+    <ion-slide>
+      <div>
+      <img src="img/candidates/Refiloe.png" class="charImg">
+      <i class="icon ion-android-lock energized" ng-if="pendinguser.locked" style="font-size: 3em; position: absolute;left: 4%;"></i>
+    </div>
+      <div class="card playerInfo">
+         <span class="progTitl">speed</span> <meter value="{{pendinguser.quals.speed}}" max="100" id="speed"></meter><br><br>
+         <span class="progTitl">agility</span> <meter value="{{pendinguser.quals.agility}}" max="100" id="speed"></meter><br><br>
+         <span class="progTitl">aerobics</span> <meter value="{{pendinguser.quals.aerobics}}" max="100" id="speed"></meter>
+      </div>
+  </ion-slide>
+      <ion-slide>
+        <div>
+      <img src="img/candidates/Rendani.png" class="charImg">
+      <i class="icon ion-android-lock energized" ng-if="pendinguser.locked" style="font-size: 3em; position: absolute;left: 4%;"></i>
+      </div>
+      <div class="card playerInfo">
+         <span class="progTitl">speed</span> <meter value="{{pendinguser.quals.speed}}" max="100" id="speed"></meter><br><br>
+         <span class="progTitl">agility</span> <meter value="{{pendinguser.quals.agility}}" max="100" id="speed"></meter><br><br>
+         <span class="progTitl">aerobics</span> <meter value="{{pendinguser.quals.aerobics}}" max="100" id="speed"></meter>
+      </div>
+  </ion-slide>
+      <ion-slide>
+      <div>
+      <img src="img/candidates/Sbu.png" class="charImg">
+      <i class="icon ion-android-lock energized" ng-if="pendinguser.locked" style="font-size: 3em; position: absolute;left: 4%;"></i>
+      </div>
+      <div class="card playerInfo">
+         <span class="progTitl">speed</span> <meter value="{{pendinguser.quals.speed}}" max="100" id="speed"></meter><br><br>
+         <span class="progTitl">agility</span> <meter value="{{pendinguser.quals.agility}}" max="100" id="speed"></meter><br><br>
+         <span class="progTitl">aerobics</span> <meter value="{{pendinguser.quals.aerobics}}" max="100" id="speed"></meter>
+      </div>
+  </ion-slide>
+  <ion-slide>
+      <div>
+      <img src="img/candidates/Sticks.png" class="charImg">
+      <i class="icon ion-android-lock energized" ng-if="pendinguser.locked" style="font-size: 3em; position: absolute;left: 4%;"></i>
+      </div>
+      <div class="card playerInfo">
+         <span class="progTitl">speed</span> <meter value="{{pendinguser.quals.speed}}" max="100" id="speed"></meter><br><br>
+         <span class="progTitl">agility</span> <meter value="{{pendinguser.quals.agility}}" max="100" id="speed"></meter><br><br>
+         <span class="progTitl">aerobics</span> <meter value="{{pendinguser.quals.aerobics}}" max="100" id="speed"></meter>
+      </div>
+  </ion-slide>
+
+</ion-slide-box>
+<!-- <div align="center" style="margin: 2px; padding-top: 1px;">
+
+
+</div> -->
+</div>
+ <div style="max-width: 10%; min-width: 10%; min-height: 50%; z-index: 500;" class="innerDivs" ng-click="viewNxtPlayer('right', index)" ng-if="plSelectionRight">
+ <i class="ion-ios-arrow-right skiper light" style="right: 3%;"></i>
+</div>
+</div>
+
+  </ion-pane> 
+
+<div class="bar bar-clear bar-footer" style="opacity: 0.85;" ng-if="setPlayers">
+ <div class="title">
+
+   <div class="button selStar" style="background-color: transparent; min-width: 7em;" ng-click="startGame()">
+    <span style="font-family: Ichiro; font-size: 3.5em; color: orange;">Start</span></div>
+</div>
+  </div>
+</ion-view>
+
+<script type="text/ng-template" id="setDifficulty.html">
+  
+            <div align="center" class="loader" style="padding: 0px; margin: 1px;">
+                <span style="font-size: 7px; display: block;" align="center" class="light">adjust knob to set difficulty</span>
+            
+                <img src="img/levels_img/lev_1.png" style="max-width: 90%; height: relative;" ng-if="levelOfDifficulty=='1'">
+                <img src="img/levels_img/lev_2.png" style="max-width: 90%; height: relative;" ng-if="levelOfDifficulty=='2'">
+                <img src="img/levels_img/lev_3.png" style="max-width: 90%; height: relative;" ng-if="levelOfDifficulty=='3'">
+                <br>
+            
+             <span style="font-size: 10px; color: grey;" align="center">
+                {{diffMsg}}
+            </span>
+            </div>
+
+            <div class="range" style=" margin-top: 1px; padding: 1px;" align="center">
+                <i class="icon ion-android-remove light" ng-click="adjDiff('less')"></i>
+                  <input type="range" min="1" max="3" value="levelOfDifficulty" ng-model="levelOfDifficulty" ng-change="diffMsgCtrl(levelOfDifficulty)">
+                <i class="icon ion-android-add light" ng-click="adjDiff('more')"></i>
+            </div>
+
+             <p class="confBtn" style="display: inline; float: left; margin-left: 5%;" ng-click="DiffConf_btns('cancel')">Cancel</p>
+             <p class="confBtn" style="display: inline; float: right; margin-right: 5%;"  ng-click="DiffConf_btns('set', levelOfDifficulty )">Set</p>
+          
+</script>
+
+<style type="text/css">
+
+    .lePane{
+      background-image: url('img/sessConf_bg.png'); 
+      background-size: cover; 
+      background-repeat: no-repeat;
+    }
+
+    .progTitl{
+      /*  display: inline; 
+          color: grey; 
+          padding-bottom: 20px;
+       */     
+      font-size: 2.5em;
+      font-family: Ichiro;
+      color: black;
+    }
+
+    .dim{
+      opacity: 0.35;
+    }
+
+    .noDim{
+      opacity: 1;
+    }   
+
+    .charImg{
+      width: 150px;
+      height: 150px;
+      float: left;
+      border-radius: 50%;
+      margin-right: 5px;
+    }
+     .charInfo{
+        margin-left: 2px;
+        min-height: 150px;
+     }
+
+meter{
+
+  height: 30px;
+  width: 50%;
+  display: inline;
+
+  /*margin: 5px;*/
+  padding-top: 4px;
+  padding-bottom: 15px;
+  float: right;
+  margin-right: 25%;
+}
+
+.selStar{
+  width: 80px;
+  padding: 2px;
+}
+   .slider-pager .slider-pager-page{
+    color: #fff;
+    text-decoration-color: #fff;
+    visibility: hidden;
+   }
+
+   .skiper{
+      font-size: 5em;
+      position: absolute; 
+      bottom: 40%; 
+   }
+
+  .emojis{
+
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+    border: 3px solid #00C853;
+}
+
+@keyframes fade_ {
+   from { opacity: 1.0; } 
+    50% { opacity: 0.4; }
+    to  { opacity: 1.0; }
+}
+ 
+@-webkit-keyframes fade_ {
+    from { opacity: 1.0; } 
+    50% { opacity: 0.4; }
+    to  { opacity: 1.0; }
+}
+
+@keyframes fade {
+   from { opacity: 1.0; } 
+    50% { opacity: 0.5; }
+    to  { opacity: 1.0; }
+}
+ 
+@-webkit-keyframes fade {
+    from { opacity: 1.0; } 
+    50% { opacity: 0.5; }
+    to  { opacity: 1.0; }
+}
+ 
+.flicker {
+    animation:fade 1500ms infinite;
+    -webkit-animation:fade 1500ms infinite;
+    color: white;
+    text-decoration-color: white;
+    padding: 0px;
+    margin: 2px;
+}
+
+.flicker2 {
+    animation:fade_ 1000ms infinite;
+    -webkit-animation:fade_ 1000ms infinite;
+}
+
+#viewPort{
+    margin-bottom: 1px;
+    padding: 1px;
+}
+
+#pauseMenu{
+    width: 280px;
+    height: 280px;
+    margin: 0px;
+}
+
+.pauseMenuBtns{
+    padding: 0px;
+    font-size: 14px;
+    margin: 2px;
+    min-width: 230px;
+}
+
+.innerDivs{
+     display: inline-block;
+}
+
+.playerInfo{
+    min-height: 140px;
+    padding-top: 14px;
+    padding-left: 20px;
+    margin: 5px;
+    opacity: 0.6;
+}
+
+meter{
+  float: right;
+  margin-right: 30px;
+}
+
+.noFlick{
+  padding: 0px;
+   margin: 2px;
+   color: white;
+   /*margin-top: 5px;*/
+}
+
+</style>
+

@@ -1,0 +1,76 @@
+<ion-view name="menuContent">
+    <ion-nav-bar class="bar-clear">
+
+      <ion-nav-buttons side="left">
+       <button class="button button-icon ion-gear-b" ng-click="settings($event)" style="color: orange;"></button>
+      </ion-nav-buttons>
+
+      <ion-nav-buttons side="right">
+        <button class="button button-clear" ng-click="appShutdown()" style="font-size: 2.5em; font-family: Ichiro; color: orange;">Exit</button>
+      </ion-nav-buttons>
+     </ion-nav-bar>
+  <ion-pane id="container" class="row row-center" ng-init="homeInit()">
+     
+ <div class="col" align="center">
+    <div class="button homeBtns" ng-if="openSess" ng-click="checkCharsLoad(pickupSession)">
+      <span style="color: orange; font-family: Ichiro; font-size: 3em;">Continue</span>
+    </div><br>
+
+    <button class="button homeBtns" ng-click="checkCharsLoad(goToGame)">
+      <span style="color: orange; font-family: Ichiro; font-size: 3em;">New Game</span>
+    </button><br>
+
+    <div class="button  homeBtns" ng-click="instructions_()" >
+      <span  style="color: orange; font-family: Ichiro; font-size: 3em;">Instructions</span>
+    </div><br>
+
+    <div class="button homeBtns" ng-click="HighScore()" ng-if="HighScoreAvailable">
+      <span style="color: orange; font-family: Ichiro; font-size: 3em;">High Score</span>
+    </div>
+
+  </div>
+ </ion-pane>
+</ion-view>
+
+<script id="settingsMenu.html" type="text/ng-template">    
+  <ion-popover-view style="max-width: 170px; height: 170px;" id="settingsPopView">
+    <ion-pane style="background-color: #444;">
+        <div style="padding: 0px;margin-left: 20px; font-size: 2.5em; font-family: Ichiro; color: orange;">
+            
+            <div>
+            <p  style="display: inline-block;">Vibrations</p>
+             <label class="toggle toggle-energized" style="display: inline-block; margin-top: 5px;">
+               <input type="checkbox" ng-model="vibratoSwitch" ng-change="setVibratos(vibratoSwitch)" value="true" >
+               <div class="track"><div class="handle"></div></div>
+             </label>
+            </div>
+
+             <p  style=" margin-top: 0.35em;" ng-click="bootstrap('refresh')">Refresh</p>
+             <p style=" margin-top: 0.35em;" ng-click="bootstrap('reset')">Reset</p>
+             <p style=" margin-top: 0.35em;" ng-click="about()">About</p>
+
+         </div>
+    </ion-pane>
+  </ion-popover-view>
+</script>
+
+
+<style type="text/css">
+  #container{
+    background-image: url('img/home_bg.png');
+    /*background-color: yellow;*/
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: transparent;
+    
+  }
+
+  .homeBtns{
+    background-color: transparent;
+    min-width: 10em;
+    margin: 4px;
+  }
+
+  
+</style>
+
